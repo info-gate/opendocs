@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0" />
+  <title>HWP Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+      background: #ffffff;
+      color: #1f2937;
+      padding: 16px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    #status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      color: #6b7280;
+    }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid #e5e7eb;
+      border-top-color: #1a56db;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #content { display: none; }
+    #content.visible { display: block; }
+    .hwp-page {
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+      margin-bottom: 16px;
+      padding: 24px;
+      border-radius: 4px;
+    }
+    table { border-collapse: collapse; width: 100%; margin: 8px 0; }
+    td, th { border: 1px solid #d1d5db; padding: 6px 8px; }
+    img { max-width: 100%; height: auto; }
+    .warning-banner {
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #92400e;
+    }
+  </style>
+</head>
+<body>
+  <div id="status">
+    <div class="spinner"></div>
+    <span>HWP 파일을 불러오는 중...</span>
+  </div>
+  <div id="content"></div>
+
+  <script>
+    // ─── postMessage bridge: React Native ↔ WebView ──────────────────────────
+    function sendToRN(type, payload) {
+      const msg = JSON.stringify({ type, payload });
+      if (window.ReactNativeWebView) {
+        window.ReactNativeWebView.postMessage(msg);
+      }
+    }
+
+    function showStatus(text) {
+      document.getElementById('status').innerHTML =
+        '<div class="spinner"></div><span>' + text + '</span>';
+    }
+
+    function showError(msg) {
+      document.getElementById('status').innerHTML =
+        '<p style="color:#ef4444;text-align:center;padding:24px;">' + msg + '</p>';
+      sendToRN('error', { message: msg });
+    }
+
+    function showContent(html, partial) {
+      const statusEl = document.getElementById('status');
+      const contentEl = document.getElementById('content');
+      statusEl.style.display = 'none';
+      contentEl.innerHTML = '';
+      if (partial) {
+        const banner = document.createElement('div');
+        banner.className = 'warning-banner';
+        banner.textContent = '일부 복잡한 레이아웃(표, 이미지 혼재)은 단순 텍스트 모드로 표시됩니다.';
+        contentEl.appendChild(banner);
+      }
+      const page = document.createElement('div');
+      page.className = 'hwp-page';
+      page.innerHTML = html;
+      contentEl.appendChild(page);
+      contentEl.classList.add('visible');
+      sendToRN('loaded', { partial });
+    }
+
+    // ─── HWP 파싱 (hwp.js CDN — 오프라인 번들 버전) ──────────────────────────
+    // hwp.js를 CDN에서 로드 (온라인), 오프라인은 fallback 텍스트 추출
+    async function parseHwpBase64(base64Data, fileName) {
+      try {
+        showStatus('파일 분석 중...');
+        // base64 → ArrayBuffer
+        const binary = atob(base64Data);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+          bytes[i] = binary.charCodeAt(i);
+        }
+        const buffer = bytes.buffer;
+
+        // hwp.js 동적 로드 시도
+        if (typeof window.HWP !== 'undefined') {
+          await renderWithHwpJs(buffer, fileName);
+        } else {
+          // HWP.js 없으면 기본 텍스트 추출 폴백
+          renderFallback(buffer, fileName);
+        }
+      } catch (e) {
+        showError('HWP 파일 렌더링 실패: ' + (e.message || String(e)));
+      }
+    }
+
+    async function renderWithHwpJs(buffer, fileName) {
+      try {
+        const hwp = await window.HWP.open(buffer, { type: 'arrayBuffer' });
+        let html = '<h2 style="font-size:16px;margin-bottom:16px;color:#374151;">' +
+          escapeHtml(fileName) + '</h2>';
+        const body = hwp.info.document.body;
+        const sections = body.sections;
+        for (const section of sections) {
+          for (const para of section.content) {
+            html += renderParagraph(para);
+          }
+        }
+        showContent(html, false);
+      } catch (e) {
+        renderFallback(buffer, fileName);
+      }
+    }
+
+    function renderParagraph(para) {
+      if (!para || !para.content) return '';
+      let text = '';
+      for (const item of para.content) {
+        if (item.type === 'char' && item.char) text += escapeHtml(item.char);
+        else if (item.type === 'lineBreak') text += '<br/>';
+      }
+      if (!text.trim()) return '<br/>';
+      return '<p style="margin-bottom:6px;">' + text + '</p>';
+    }
+
+    function renderFallback(buffer, fileName) {
+      // 바이너리에서 한글/ASCII 텍스트 추출 (최소한의 가독성)
+      const decoder = new TextDecoder('utf-16le', { fatal: false });
+      try {
+        const arr = new Uint8Array(buffer);
+        let extracted = '';
+        for (let i = 0; i < arr.length - 1; i += 2) {
+          const code = arr[i] | (arr[i + 1] << 8);
+          if ((code >= 0xAC00 && code <= 0xD7A3) ||  // 한글
+              (code >= 0x0020 && code <= 0x007E) ||   // ASCII printable
+              code === 0x000A || code === 0x000D) {    // newline
+            extracted += String.fromCharCode(code);
+          }
+        }
+        const cleaned = extracted.replace(/\s+/g, ' ').trim();
+        if (cleaned.length > 50) {
+          const html = '<p style="color:#6b7280;font-size:13px;margin-bottom:12px;">텍스트 추출 모드로 표시됩니다.</p>' +
+            '<pre style="white-space:pre-wrap;word-break:break-word;font-family:inherit;font-size:14px;">' +
+            escapeHtml(cleaned.substring(0, 10000)) + '</pre>';
+          showContent(html, true);
+        } else {
+          showError('이 HWP 파일은 현재 버전에서 렌더링할 수 없습니다. PC에서 열어주세요.');
+        }
+      } catch (e) {
+        showError('HWP 파일을 읽을 수 없습니다.');
+      }
+    }
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    // ─── React Native → WebView 메시지 수신 ──────────────────────────────────
+    document.addEventListener('message', handleMessage);
+    window.addEventListener('message', handleMessage);
+
+    function handleMessage(event) {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === 'loadFile') {
+          parseHwpBase64(data.base64, data.fileName);
+        }
+      } catch (e) {
+        // ignore parse errors
+      }
+    }
+
+    // Ready 신호 전송
+    sendToRN('ready', {});
+  </script>
+
+  <!-- hwp.js CDN (온라인 환경에서만 로드됨, 오프라인 시 fallback 동작) -->
+  <script>
+    // hwp.js 동적 로드 시도 (CDN: unpkg)
+    (function() {
+      var script = document.createElement('script');
+      script.src = 'https://unpkg.com/hwp.js@latest/dist/hwp.js';
+      script.onerror = function() { /* CDN 실패 → fallback 사용 */ };
+      document.head.appendChild(script);
+    })();
+  </script>
+</body>
+</html>

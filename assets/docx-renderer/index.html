@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0" />
+  <title>Document Viewer</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, Arial, sans-serif;
+      background: #fff;
+      color: #1f2937;
+      padding: 20px;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    #status {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      color: #6b7280;
+    }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid #e5e7eb;
+      border-top-color: #1a56db;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 12px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #content { display: none; }
+    #content.visible { display: block; }
+    .warning-banner {
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      border-radius: 6px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      font-size: 13px;
+      color: #92400e;
+    }
+    /* mammoth output styles */
+    h1 { font-size: 22px; font-weight: 700; margin: 16px 0 8px; }
+    h2 { font-size: 18px; font-weight: 600; margin: 14px 0 6px; }
+    h3 { font-size: 16px; font-weight: 600; margin: 12px 0 4px; }
+    p  { margin-bottom: 8px; }
+    table { border-collapse: collapse; width: 100%; margin: 8px 0; font-size: 13px; }
+    td, th { border: 1px solid #d1d5db; padding: 6px 8px; }
+    img { max-width: 100%; height: auto; border-radius: 4px; margin: 8px 0; }
+    ul, ol { padding-left: 20px; margin-bottom: 8px; }
+    li { margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <div id="status">
+    <div class="spinner"></div>
+    <span>문서를 불러오는 중...</span>
+  </div>
+  <div id="content"></div>
+
+  <script>
+    function sendToRN(type, payload) {
+      const msg = JSON.stringify({ type, payload });
+      if (window.ReactNativeWebView) window.ReactNativeWebView.postMessage(msg);
+    }
+
+    function showError(msg) {
+      document.getElementById('status').innerHTML =
+        '<p style="color:#ef4444;text-align:center;padding:24px;">' + msg + '</p>';
+      sendToRN('error', { message: msg });
+    }
+
+    function showContent(html, hasWarning) {
+      document.getElementById('status').style.display = 'none';
+      const contentEl = document.getElementById('content');
+      contentEl.innerHTML = '';
+      if (hasWarning) {
+        const banner = document.createElement('div');
+        banner.className = 'warning-banner';
+        banner.textContent = '복잡한 레이아웃(표·이미지 혼재)은 단순 텍스트 모드로 표시됩니다.';
+        contentEl.appendChild(banner);
+      }
+      const div = document.createElement('div');
+      div.innerHTML = html;
+      contentEl.appendChild(div);
+      contentEl.classList.add('visible');
+      sendToRN('loaded', { hasWarning });
+    }
+
+    async function processDocx(base64Data) {
+      try {
+        const binary = atob(base64Data);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        const arrayBuffer = bytes.buffer;
+
+        if (typeof mammoth !== 'undefined') {
+          const result = await mammoth.convertToHtml({ arrayBuffer });
+          const hasWarnings = result.messages && result.messages.length > 0;
+          showContent(result.value || '<p>내용을 표시할 수 없습니다.</p>', hasWarnings);
+        } else {
+          showError('문서 파서를 로드할 수 없습니다. 인터넷 연결 후 다시 시도하세요.');
+        }
+      } catch (e) {
+        showError('DOCX 파일 렌더링 실패: ' + (e.message || String(e)));
+        sendToRN('error', { message: String(e) });
+      }
+    }
+
+    async function processXlsx(base64Data) {
+      try {
+        const binary = atob(base64Data);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+
+        if (typeof XLSX !== 'undefined') {
+          const wb = XLSX.read(bytes, { type: 'array' });
+          let html = '';
+          wb.SheetNames.forEach(function(sheetName) {
+            html += '<h3 style="margin:12px 0 6px;font-size:14px;color:#374151;">📊 ' +
+              sheetName + '</h3>';
+            const ws = wb.Sheets[sheetName];
+            html += XLSX.utils.sheet_to_html(ws, { editable: false });
+          });
+          showContent(html, false);
+        } else {
+          showError('스프레드시트 파서를 로드할 수 없습니다.');
+        }
+      } catch (e) {
+        showError('XLSX 파일 렌더링 실패: ' + (e.message || String(e)));
+      }
+    }
+
+    document.addEventListener('message', handleMessage);
+    window.addEventListener('message', handleMessage);
+
+    function handleMessage(event) {
+      try {
+        const data = JSON.parse(event.data);
+        if (data.type === 'loadDocx') processDocx(data.base64);
+        else if (data.type === 'loadXlsx') processXlsx(data.base64);
+      } catch (e) { /* ignore */ }
+    }
+
+    sendToRN('ready', {});
+  </script>
+
+  <!-- mammoth.js & SheetJS CDN (온라인 환경) -->
+  <script src="https://unpkg.com/mammoth@1.8.0/mammoth.browser.min.js" onerror="console.warn('mammoth offline')"></script>
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.mini.min.js" onerror="console.warn('xlsx offline')"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+  "home": {
+    "title": "OpenDocs",
+    "recent_files": "최근 파일",
+    "empty_state": "열어본 파일이 없습니다.\n+ 버튼으로 문서를 열어보세요.",
+    "file_count": "파일 {{count}}개",
+    "file_count_plural": "파일 {{count}}개",
+    "pick_file": "파일 열기",
+    "privacy_badge": "100% 로컬 처리 — 서버 전송 없음"
+  },
+  "viewer": {
+    "loading": "문서를 불러오는 중...",
+    "error_render": "이 파일을 렌더링할 수 없습니다.",
+    "page_of": "{{page}} / {{total}} 페이지",
+    "hwp_partial_warning": "복잡한 레이아웃(표·이미지 혼재)은 단순 텍스트 모드로 표시될 수 있습니다.",
+    "close": "닫기"
+  },
+  "favorites": {
+    "title": "즐겨찾기",
+    "empty_state": "즐겨찾기가 없습니다.\n파일에 별표를 눌러 고정하세요.",
+    "add": "즐겨찾기 추가",
+    "remove": "즐겨찾기 해제"
+  },
+  "settings": {
+    "title": "설정",
+    "language": "언어",
+    "app_version": "앱 버전",
+    "privacy_note": "모든 파일은 기기 내에서만 처리됩니다. 서버로 전송되지 않습니다.",
+    "privacy_title": "개인정보 보호",
+    "about": "OpenDocs 정보",
+    "forever_free": "영원히 무료 — 구독 없음, 결제 팝업 없음."
+  },
+  "error": {
+    "render_failed_title": "파일을 열 수 없음",
+    "render_failed": "이 파일을 렌더링할 수 없습니다. 복잡한 레이아웃은 PC에서 열어주세요.",
+    "hwp_render_failed": "이 HWP 파일을 렌더링할 수 없습니다. 복잡한 표·이미지 혼재 문서는 PC의 한글 뷰어에서 열어주세요.",
+    "docx_render_failed": "문서를 완전히 렌더링할 수 없습니다. 복잡한 레이아웃은 단순 텍스트 모드로 표시됩니다.",
+    "epub_render_failed": "EPUB 파일을 열 수 없습니다. DRM이 적용되거나 손상된 파일일 수 있습니다.",
+    "image_render_failed": "이미지를 표시할 수 없습니다.",
+    "file_not_found": "파일을 찾을 수 없습니다. 이동되거나 삭제된 파일일 수 있습니다.",
+    "format_unsupported": "지원하지 않는 파일 형식입니다. 지원 형식: PDF, HWP, HWPX, DOCX, PPTX, XLSX, EPUB, TXT, 이미지",
+    "retry": "다시 시도"
+  },
+  "format": {
+    "pdf": "PDF",
+    "hwp": "한글(HWP)",
+    "hwpx": "한글(HWPX)",
+    "docx": "Word 문서",
+    "pptx": "PowerPoint",
+    "xlsx": "Excel",
+    "epub": "EPUB",
+    "txt": "텍스트",
+    "jpg": "이미지",
+    "jpeg": "이미지",
+    "png": "이미지",
+    "heic": "이미지",
+    "webp": "이미지",
+    "unknown": "알 수 없음"
+  },
+  "onboarding": {
+    "title": "진짜 무료.\n숨겨진 결제 없음.",
+    "privacy_promise": "파일이 기기 밖으로 나가지 않습니다.",
+    "no_account_needed": "계정 없이. 결제 없이. 팝업 없이. 영원히.",
+    "get_started": "파일 열기"
+  },
+  "language": {
+    "en": "English",
+    "ko": "한국어",
+    "ja": "日本語",
+    "zh": "中文",
+    "es": "Español",
+    "pt": "Português"
+  }
+}

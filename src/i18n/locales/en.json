@@ -1,0 +1,74 @@
+{
+  "home": {
+    "title": "OpenDocs",
+    "recent_files": "Recent Files",
+    "empty_state": "No files yet.\nTap + to open a document.",
+    "file_count": "{{count}} file",
+    "file_count_plural": "{{count}} files",
+    "pick_file": "Open File",
+    "privacy_badge": "100% Local — No server uploads, ever."
+  },
+  "viewer": {
+    "loading": "Loading document...",
+    "error_render": "Could not render this file.",
+    "page_of": "Page {{page}} of {{total}}",
+    "hwp_partial_warning": "Complex layouts (tables, images) may appear in simplified text mode.",
+    "close": "Close"
+  },
+  "favorites": {
+    "title": "Favorites",
+    "empty_state": "No favorites yet.\nStar a file to pin it here.",
+    "add": "Add to Favorites",
+    "remove": "Remove from Favorites"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "app_version": "App Version",
+    "privacy_note": "All files are processed locally on your device. Nothing is uploaded to any server.",
+    "privacy_title": "Privacy First",
+    "about": "About OpenDocs",
+    "forever_free": "Forever Free — No subscriptions, no paywalls."
+  },
+  "error": {
+    "render_failed_title": "Couldn't Open File",
+    "render_failed": "This file couldn't be rendered. For complex layouts, try opening on a PC.",
+    "hwp_render_failed": "This HWP file couldn't be rendered. Complex layouts with tables or images may not display correctly. Try opening on a PC with Hancom Office.",
+    "docx_render_failed": "This document couldn't be fully rendered. Complex layouts may appear in simplified text mode.",
+    "epub_render_failed": "This EPUB file couldn't be opened. The file may be DRM-protected or corrupted.",
+    "image_render_failed": "This image couldn't be displayed.",
+    "file_not_found": "File not found. It may have been moved or deleted.",
+    "format_unsupported": "This file format is not supported. Supported formats: PDF, HWP, HWPX, DOCX, PPTX, XLSX, EPUB, TXT, and images.",
+    "retry": "Try Again"
+  },
+  "format": {
+    "pdf": "PDF",
+    "hwp": "HWP",
+    "hwpx": "HWPX",
+    "docx": "Word",
+    "pptx": "PowerPoint",
+    "xlsx": "Excel",
+    "epub": "EPUB",
+    "txt": "Text",
+    "jpg": "Image",
+    "jpeg": "Image",
+    "png": "Image",
+    "heic": "Image",
+    "webp": "Image",
+    "unknown": "Unknown"
+  },
+  "onboarding": {
+    "title": "Actually Free.\nNo Tricks.",
+    "privacy_promise": "Your files never leave your device.",
+    "no_account_needed": "No account. No subscription. No paywall. Ever.",
+    "get_started": "Open a File"
+  },
+  "language": {
+    "en": "English",
+    "ko": "한국어",
+    "ja": "日本語",
+    "zh": "中文",
+    "es": "Español",
+    "pt": "Português"
+  }
+}

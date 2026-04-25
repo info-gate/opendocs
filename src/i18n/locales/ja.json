@@ -1,0 +1,74 @@
+{
+  "home": {
+    "title": "OpenDocs",
+    "recent_files": "最近のファイル",
+    "empty_state": "まだファイルがありません。\n+ボタンで文書を開いてください。",
+    "file_count": "{{count}}個のファイル",
+    "file_count_plural": "{{count}}個のファイル",
+    "pick_file": "ファイルを開く",
+    "privacy_badge": "100%ローカル処理 — サーバーへの送信なし"
+  },
+  "viewer": {
+    "loading": "読み込み中...",
+    "error_render": "このファイルを表示できません。",
+    "page_of": "{{page}} / {{total}} ページ",
+    "hwp_partial_warning": "複雑なレイアウト（表・画像の混在）は簡易テキストモードで表示される場合があります。",
+    "close": "閉じる"
+  },
+  "favorites": {
+    "title": "お気に入り",
+    "empty_state": "お気に入りがありません。\nファイルに星をつけて固定しましょう。",
+    "add": "お気に入りに追加",
+    "remove": "お気に入りから削除"
+  },
+  "settings": {
+    "title": "設定",
+    "language": "言語",
+    "app_version": "アプリバージョン",
+    "privacy_note": "すべてのファイルはデバイス上でのみ処理されます。サーバーには送信されません。",
+    "privacy_title": "プライバシー保護",
+    "about": "OpenDocsについて",
+    "forever_free": "永久無料 — サブスクなし、課金ポップアップなし。"
+  },
+  "error": {
+    "render_failed_title": "ファイルを開けません",
+    "render_failed": "このファイルを表示できませんでした。複雑なレイアウトはPCでお試しください。",
+    "hwp_render_failed": "このHWPファイルを表示できません。PCでHancom Officeを使って開いてください。",
+    "docx_render_failed": "ドキュメントを完全に表示できません。複雑なレイアウトは簡易表示になります。",
+    "epub_render_failed": "EPUBファイルを開けません。DRM保護またはファイルが破損している可能性があります。",
+    "image_render_failed": "画像を表示できません。",
+    "file_not_found": "ファイルが見つかりません。移動または削除された可能性があります。",
+    "format_unsupported": "このファイル形式はサポートされていません。対応形式: PDF、HWP、DOCX、XLSX、EPUB、TXT、画像",
+    "retry": "再試行"
+  },
+  "format": {
+    "pdf": "PDF",
+    "hwp": "HWP",
+    "hwpx": "HWPX",
+    "docx": "Word",
+    "pptx": "PowerPoint",
+    "xlsx": "Excel",
+    "epub": "EPUB",
+    "txt": "テキスト",
+    "jpg": "画像",
+    "jpeg": "画像",
+    "png": "画像",
+    "heic": "画像",
+    "webp": "画像",
+    "unknown": "不明"
+  },
+  "onboarding": {
+    "title": "本当に無料。\n隠れた課金なし。",
+    "privacy_promise": "ファイルはデバイスの外に出ません。",
+    "no_account_needed": "アカウント不要。サブスク不要。ポップアップなし。永久に。",
+    "get_started": "ファイルを開く"
+  },
+  "language": {
+    "en": "English",
+    "ko": "한국어",
+    "ja": "日本語",
+    "zh": "中文",
+    "es": "Español",
+    "pt": "Português"
+  }
+}
