@@ -4,9 +4,7 @@
  * 실제 광고는 모바일(iOS/Android) Dev Build 에서만 동작.
  */
 import React from 'react';
-import { View } from 'react-native';
-import { BANNER_HEIGHT } from './adConfig';
 
 export function AdBanner() {
-  return <View style={{ height: BANNER_HEIGHT, backgroundColor: 'transparent' }} />;
+  return null;
 }

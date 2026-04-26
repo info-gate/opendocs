@@ -10,12 +10,15 @@
  * 사용처: 모든 탭의 상단 (홈/즐겨찾기/설정)
  */
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import { AdBanner } from './AdBanner';
 import { COLORS, SHADOWS } from '../../shared/theme';
 import { BANNER_HEIGHT } from './adConfig';
 
 export function AdBannerCard() {
+  // 웹 환경에서는 AdMob 미지원 → 빈 카드 노이즈 제거
+  if (Platform.OS === 'web') return null;
+
   return (
     <View style={styles.outer}>
       <View style={styles.card}>
