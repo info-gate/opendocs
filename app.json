@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": false,
+    "newArchEnabled": true,
     "scheme": "opendocs",
     "splash": {
       "image": "./assets/splash-icon.png",
@@ -119,10 +119,10 @@
         "expo-build-properties",
         {
           "ios": {
-            "newArchEnabled": false
+            "newArchEnabled": true
           },
           "android": {
-            "newArchEnabled": false
+            "newArchEnabled": true
           }
         }
       ],
