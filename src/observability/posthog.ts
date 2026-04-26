@@ -38,6 +38,12 @@ export const EVENTS = {
   FILE_FAVORITED:   'file_favorited',
   FILE_UNFAVORITED: 'file_unfavorited',
 
+  // 뷰어 액션 (인쇄 / 공유)
+  FILE_PRINT_ATTEMPT: 'file_print_attempt',
+  FILE_PRINT_SUCCESS: 'file_print_success',
+  FILE_SHARE_ATTEMPT: 'file_share_attempt',
+  FILE_SHARE_SUCCESS: 'file_share_success',
+
   // 설정
   LANGUAGE_CHANGED: 'language_changed',
 } as const;

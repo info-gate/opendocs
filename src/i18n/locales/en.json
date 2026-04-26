@@ -32,7 +32,12 @@
     "error_render": "Could not render this file.",
     "page_of": "Page {{page}} of {{total}}",
     "hwp_partial_warning": "Complex layouts (tables, images) may appear in simplified text mode.",
-    "close": "Close"
+    "close": "Close",
+    "print": "Print",
+    "share": "Share",
+    "print_via_share": "Use the 'Print' option from the share menu for this format.",
+    "print_unsupported": "Printing is not supported on this device.",
+    "share_unsupported": "Sharing is not supported on this device."
   },
   "favorites": {
     "title": "Favorites",

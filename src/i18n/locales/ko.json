@@ -32,7 +32,12 @@
     "error_render": "이 파일을 렌더링할 수 없습니다.",
     "page_of": "{{page}} / {{total}} 페이지",
     "hwp_partial_warning": "복잡한 레이아웃(표·이미지 혼재)은 단순 텍스트 모드로 표시될 수 있습니다.",
-    "close": "닫기"
+    "close": "닫기",
+    "print": "인쇄",
+    "share": "공유",
+    "print_via_share": "이 형식은 공유 메뉴의 '프린트' 옵션을 사용하세요.",
+    "print_unsupported": "이 기기에서는 인쇄를 지원하지 않습니다.",
+    "share_unsupported": "이 기기에서는 공유를 지원하지 않습니다."
   },
   "favorites": {
     "title": "즐겨찾기",
