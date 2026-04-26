@@ -18,9 +18,8 @@ workflows:
     environment:
       groups:
         - opendocs_env
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.wowpia.opendocs
+      # ios_signing 블록 제거 — Codemagic 자동 pre-flight check 가 실패 원인
+      # (manual scripts 가 처리)
       vars:
         BUNDLE_ID: "com.wowpia.opendocs"
         XCODE_WORKSPACE: "ios/OpenDocs.xcworkspace"
