@@ -1,0 +1,67 @@
+{
+  "ascAppId": "6763845346",
+  "version": "1.0",
+  "copyright": "© 2026 Wowpia · Info-Gate Inc.",
+  "primaryCategory": "PRODUCTIVITY",
+  "secondaryCategory": "UTILITIES",
+
+  "appInfoLocalizations": {
+    "ko": {
+      "name": "OpenDocs",
+      "subtitle": "무료 문서 뷰어 - PDF·HWP·Word",
+      "privacyPolicyUrl": "https://info-gate.github.io/opendocs/privacy/"
+    },
+    "en-US": {
+      "name": "OpenDocs Reader",
+      "subtitle": "PDF, HWP, Word - free viewer",
+      "privacyPolicyUrl": "https://info-gate.github.io/opendocs/privacy/"
+    },
+    "ja": {
+      "name": "OpenDocs ドキュメント",
+      "subtitle": "PDF·HWP·Word 無料ビューア",
+      "privacyPolicyUrl": "https://info-gate.github.io/opendocs/privacy/"
+    }
+  },
+
+  "versionLocalizations": {
+    "ko": {
+      "description": "OpenDocs 는 모든 표준 문서 파일을 한 번에 열어보는 가벼운 무료 뷰어입니다.\n\n[지원 형식]\nPDF · HWP · DOCX · XLSX · PPTX · EPUB · TXT · 이미지\n\n[주요 기능]\n• 빠른 실행\n• 다크 모드\n• 최근 파일 + 즐겨찾기\n• 100% 로컬 처리\n• 한국 HWP 한글 문서 네이티브 지원\n\n[왜 OpenDocs?]\n- 완전 무료, 인앱 결제·구독 없음\n- 회원가입 불필요\n- 광고 후원 (뷰어 화면 안엔 광고 없음)\n- 한국어, 영어, 일본어 인터페이스\n\n문의: wowpia0127@gmail.com",
+      "keywords": "PDF,HWP,Word,Excel,EPUB,문서,뷰어,무료,한글,오피스",
+      "promotionalText": "PDF · HWP · Word · Excel · PPT · EPUB 모두 한 앱에서. 완전 무료.",
+      "supportUrl": "https://info-gate.github.io/opendocs/",
+      "marketingUrl": "https://info-gate.github.io/opendocs/"
+    },
+    "en-US": {
+      "description": "OpenDocs is a lightweight free viewer for all standard document formats.\n\n[Supported formats]\nPDF · HWP · DOCX · XLSX · PPTX · EPUB · TXT · Images\n\n[Key features]\n• Fast launch\n• Dark mode\n• Recent files + favorites\n• 100% on-device processing\n• Native HWP support for Korean documents\n\n[Why OpenDocs?]\n- Completely free, no in-app purchases\n- No account required\n- Ad-supported (no ads inside viewer)\n- English, Korean, Japanese UI\n\nContact: wowpia0127@gmail.com",
+      "keywords": "PDF,HWP,Word,Excel,EPUB,document,viewer,free,reader,office",
+      "promotionalText": "PDF, HWP, Word, Excel, PPT, EPUB — all in one free app.",
+      "supportUrl": "https://info-gate.github.io/opendocs/",
+      "marketingUrl": "https://info-gate.github.io/opendocs/"
+    },
+    "ja": {
+      "description": "OpenDocs はあらゆる標準文書ファイルを一つで開ける軽量・無料ビューアです。\n\n[対応フォーマット]\nPDF · HWP · DOCX · XLSX · PPTX · EPUB · TXT · 画像\n\n[主な機能]\n• 高速起動\n• ダークモード\n• 最近のファイル + お気に入り\n• 100% 端末内処理\n• 韓国語 HWP 文書ネイティブ対応\n\n[特長]\n- 完全無料、課金・サブスクなし\n- アカウント不要\n- 広告で運営 (ビューア内には広告なし)\n- 日本語、英語、韓国語UI\n\nお問い合わせ: wowpia0127@gmail.com",
+      "keywords": "PDF,HWP,Word,Excel,EPUB,文書,ビューア,無料,オフィス,リーダー",
+      "promotionalText": "PDF、HWP、Word、Excel、PPT、EPUB を一つのアプリで。完全無料。",
+      "supportUrl": "https://info-gate.github.io/opendocs/",
+      "marketingUrl": "https://info-gate.github.io/opendocs/"
+    }
+  },
+
+  "reviewDetail": {
+    "notes": "OpenDocs is a lightweight document viewer with no account/login system. All file processing happens on-device. The app uses Google AdMob banner+interstitial ads to fund free distribution. No special test credentials needed — open the app, tap '+ Open File', select any document.\n\nKorean HWP support is implemented via embedded WebView renderer. PDF uses native rendering. All viewers work fully offline.",
+    "contactFirstName": "BongJun",
+    "contactLastName": "Park",
+    "contactEmail": "wowpia0127@gmail.com",
+    "contactPhone": "+82-10-3847-0921"
+  },
+
+  "screenshots": {
+    "APP_IPHONE_67": [
+      "store/appstore/ios/screenshot-1-home.png",
+      "store/appstore/ios/screenshot-2-files.png",
+      "store/appstore/ios/screenshot-3-home-guide.png",
+      "store/appstore/ios/screenshot-4-settings.png",
+      "store/appstore/ios/screenshot-5-settings-family.png"
+    ]
+  }
+}

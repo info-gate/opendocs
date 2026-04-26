@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#0c4a2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+
+  <!-- big lock emoji -->
+  <text x="540" y="380" font-family="sans-serif" font-size="280" text-anchor="middle">🔒</text>
+
+  <text x="540" y="540" font-family="-apple-system, sans-serif" font-size="80" font-weight="800" fill="#ffffff" text-anchor="middle">완전 오프라인</text>
+  <text x="540" y="640" font-family="-apple-system, sans-serif" font-size="80" font-weight="800" fill="#ffd166" text-anchor="middle">프라이버시 우선</text>
+
+  <text x="540" y="760" font-family="-apple-system, sans-serif" font-size="36" fill="#dcfce7" text-anchor="middle">파일을 절대 서버에 업로드하지 않습니다.</text>
+  <text x="540" y="820" font-family="-apple-system, sans-serif" font-size="36" fill="#dcfce7" text-anchor="middle">모든 처리는 사용자 기기 안에서만.</text>
+
+  <!-- comparison cards -->
+  <g transform="translate(80, 950)">
+    <rect width="920" height="200" rx="24" fill="#ffffff" opacity="0.95"/>
+    <circle cx="100" cy="100" r="50" fill="#dcfce7"/>
+    <text x="100" y="120" font-family="sans-serif" font-size="50" font-weight="800" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="190" y="90" font-family="sans-serif" font-size="36" font-weight="800" fill="#0f172a">계정 시스템 없음</text>
+    <text x="190" y="140" font-family="sans-serif" font-size="26" fill="#475569">회원가입·로그인 불필요</text>
+  </g>
+
+  <g transform="translate(80, 1180)">
+    <rect width="920" height="200" rx="24" fill="#ffffff" opacity="0.95"/>
+    <circle cx="100" cy="100" r="50" fill="#dcfce7"/>
+    <text x="100" y="120" font-family="sans-serif" font-size="50" font-weight="800" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="190" y="90" font-family="sans-serif" font-size="36" font-weight="800" fill="#0f172a">서버 업로드 0건</text>
+    <text x="190" y="140" font-family="sans-serif" font-size="26" fill="#475569">파일 데이터는 기기 내부만</text>
+  </g>
+
+  <g transform="translate(80, 1410)">
+    <rect width="920" height="200" rx="24" fill="#ffffff" opacity="0.95"/>
+    <circle cx="100" cy="100" r="50" fill="#dcfce7"/>
+    <text x="100" y="120" font-family="sans-serif" font-size="50" font-weight="800" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="190" y="90" font-family="sans-serif" font-size="36" font-weight="800" fill="#0f172a">권한 최소화</text>
+    <text x="190" y="140" font-family="sans-serif" font-size="26" fill="#475569">파일 선택 권한만 사용</text>
+  </g>
+
+  <g transform="translate(80, 1640)">
+    <rect width="920" height="200" rx="24" fill="#ffffff" opacity="0.95"/>
+    <circle cx="100" cy="100" r="50" fill="#dcfce7"/>
+    <text x="100" y="120" font-family="sans-serif" font-size="50" font-weight="800" fill="#16a34a" text-anchor="middle">✓</text>
+    <text x="190" y="90" font-family="sans-serif" font-size="36" font-weight="800" fill="#0f172a">앱 삭제 = 데이터 삭제</text>
+    <text x="190" y="140" font-family="sans-serif" font-size="26" fill="#475569">언제든 즉시 완전 제거</text>
+  </g>
+</svg>

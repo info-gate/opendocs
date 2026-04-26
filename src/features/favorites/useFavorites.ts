@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useFocusEffect } from 'expo-router';
 import { getFavoriteFiles, toggleFavorite, type FileRecord } from '../../db/database';
 import { trackEvent, EVENTS } from '../../observability/posthog';
+import { isDemoMode, DEMO_FAVORITES } from '../../db/_demoSeed';
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<FileRecord[]>([]);
@@ -10,6 +11,10 @@ export function useFavorites() {
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
+      if (isDemoMode()) {
+        setFavorites(DEMO_FAVORITES);
+        return;
+      }
       const data = await getFavoriteFiles();
       setFavorites(data);
     } finally {

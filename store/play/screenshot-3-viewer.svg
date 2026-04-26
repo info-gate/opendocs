@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <rect width="1080" height="1920" fill="#1e293b"/>
+
+  <!-- top bar -->
+  <rect x="0" y="0" width="1080" height="180" fill="#0f172a"/>
+  <text x="60" y="105" font-family="sans-serif" font-size="32" fill="#94a3b8">‹</text>
+  <text x="120" y="105" font-family="sans-serif" font-size="32" font-weight="600" fill="#ffffff">2025_연간보고서.pdf</text>
+  <text x="980" y="105" font-family="sans-serif" font-size="32" fill="#facc15" text-anchor="middle">★</text>
+
+  <!-- viewer frame -->
+  <g transform="translate(60, 240)">
+    <!-- page -->
+    <rect width="960" height="1380" rx="12" fill="#ffffff"/>
+
+    <!-- page content (mock document) -->
+    <text x="60" y="120" font-family="-apple-system, serif" font-size="48" font-weight="800" fill="#0f172a">2025 연간 사업보고서</text>
+    <text x="60" y="180" font-family="-apple-system, serif" font-size="24" fill="#64748b">주식회사 인포게이트 · 2025-12-31</text>
+    <line x1="60" y1="220" x2="900" y2="220" stroke="#e2e8f0" stroke-width="2"/>
+
+    <text x="60" y="290" font-family="-apple-system, serif" font-size="32" font-weight="700" fill="#0f172a">1. 회사 개요</text>
+    <text x="60" y="340" font-family="-apple-system, serif" font-size="22" fill="#475569">당사는 2024년 설립된 모바일 솔루션 기업으로,</text>
+    <text x="60" y="378" font-family="-apple-system, serif" font-size="22" fill="#475569">생산성 향상 도구를 개발하여 글로벌 시장에 공급하고 있습니다.</text>
+
+    <text x="60" y="460" font-family="-apple-system, serif" font-size="32" font-weight="700" fill="#0f172a">2. 주요 사업 영역</text>
+    <text x="60" y="510" font-family="-apple-system, serif" font-size="22" fill="#475569">• 문서 뷰어 솔루션 (OpenDocs)</text>
+    <text x="60" y="548" font-family="-apple-system, serif" font-size="22" fill="#475569">• 학습 플랫폼 (Barolingo)</text>
+    <text x="60" y="586" font-family="-apple-system, serif" font-size="22" fill="#475569">• 라이프스타일 앱 시리즈</text>
+
+    <text x="60" y="680" font-family="-apple-system, serif" font-size="32" font-weight="700" fill="#0f172a">3. 매출 현황</text>
+
+    <!-- mock chart -->
+    <g transform="translate(60, 720)">
+      <rect x="0" y="220" width="100" height="100" fill="#1a56db"/>
+      <text x="50" y="350" font-family="sans-serif" font-size="20" fill="#64748b" text-anchor="middle">Q1</text>
+      <rect x="140" y="170" width="100" height="150" fill="#1a56db"/>
+      <text x="190" y="350" font-family="sans-serif" font-size="20" fill="#64748b" text-anchor="middle">Q2</text>
+      <rect x="280" y="100" width="100" height="220" fill="#1a56db"/>
+      <text x="330" y="350" font-family="sans-serif" font-size="20" fill="#64748b" text-anchor="middle">Q3</text>
+      <rect x="420" y="40" width="100" height="280" fill="#facc15"/>
+      <text x="470" y="350" font-family="sans-serif" font-size="20" fill="#64748b" text-anchor="middle">Q4</text>
+      <rect x="560" y="80" width="100" height="240" fill="#1a56db"/>
+      <text x="610" y="350" font-family="sans-serif" font-size="20" fill="#64748b" text-anchor="middle">2025</text>
+    </g>
+
+    <text x="60" y="1180" font-family="-apple-system, serif" font-size="32" font-weight="700" fill="#0f172a">4. 향후 계획</text>
+    <text x="60" y="1230" font-family="-apple-system, serif" font-size="22" fill="#475569">2026년 글로벌 시장 진출 및 신규 카테고리 확장.</text>
+
+    <!-- page number -->
+    <text x="480" y="1340" font-family="sans-serif" font-size="22" fill="#94a3b8" text-anchor="middle">— 1 / 47 —</text>
+  </g>
+
+  <!-- bottom toolbar -->
+  <rect x="0" y="1730" width="1080" height="190" fill="#0f172a"/>
+  <g font-family="sans-serif" fill="#cbd5e1" text-anchor="middle">
+    <g transform="translate(0, 1820)">
+      <text x="180" y="0" font-size="40">←</text>
+      <text x="180" y="40" font-size="22">이전</text>
+    </g>
+    <g transform="translate(360, 1820)">
+      <text x="180" y="0" font-size="40">⊕</text>
+      <text x="180" y="40" font-size="22">확대</text>
+    </g>
+    <g transform="translate(720, 1820)">
+      <text x="180" y="0" font-size="40">→</text>
+      <text x="180" y="40" font-size="22">다음</text>
+    </g>
+  </g>
+</svg>

@@ -11,6 +11,7 @@ import {
 } from '../../db/database';
 import { trackEvent, EVENTS } from '../../observability/posthog';
 import { getFileFormat, getFileNameFromUri } from '../../shared/utils/fileUtils';
+import { isDemoMode, DEMO_RECENT } from '../../db/_demoSeed';
 
 export function useRecentFiles() {
   const [files, setFiles] = useState<FileRecord[]>([]);
@@ -19,6 +20,11 @@ export function useRecentFiles() {
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
+      // Store screenshot demo mode (web only, localStorage flag) — bypass DB
+      if (isDemoMode()) {
+        setFiles(DEMO_RECENT);
+        return;
+      }
       const recent = await getRecentFiles(50);
       // 경로 유효성 체크 — 삭제된 파일 soft-delete
       // (web 에선 file:// 가 아니라 blob: 인 경우가 많아 getInfoAsync 가 throw → skip)
