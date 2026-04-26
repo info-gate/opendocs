@@ -43,15 +43,23 @@ workflows:
       - name: Pod install
         script: |
           cd ios && pod install
-      - name: Set up code signing (Moodva 정확 패턴 + set -e)
+      - name: Set up code signing (cert + profile auto-create)
         script: |
-          set -e  # 에러 시 즉시 중단 (silent fail 방지)
+          set -e
           keychain initialize
+          # 1. 새 distribution cert + private key 생성 + 로컬 저장
+          #    (existing cert 의 private key 가 Codemagic 에 없어서 fetch 만으론 안 됨)
+          app-store-connect certificates create \
+            --type IOS_DISTRIBUTION \
+            --save || echo "cert create skipped (이미 한도 도달 가능 — fetch 시도)"
+          # 2. profile fetch (없으면 생성) + 위 cert 와 연결
           app-store-connect fetch-signing-files \
             "$BUNDLE_ID" \
             --type IOS_APP_STORE \
             --create
+          # 3. .p12 cert 를 keychain 에 추가
           keychain add-certificates
+          # 4. .mobileprovision 을 Xcode project 에 적용
           xcode-project use-profiles
       - name: Build IPA (App Store)
         script: |
