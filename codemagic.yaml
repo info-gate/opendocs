@@ -1,0 +1,62 @@
+# Codemagic CI/CD — OpenDocs iOS build
+# 참고: https://docs.codemagic.io/yaml/yaml-getting-started/
+#
+# 사용 흐름:
+# 1. Codemagic UI → Add application → Connect to repository (info-gate/opendocs)
+# 2. Auto-detect codemagic.yaml
+# 3. Workflow "ios-release" 선택
+# 4. App Store Connect API key + Apple cert/profile 업로드 필요 (Codemagic UI)
+# 5. "Start new build" 클릭 → 30-40min 후 TestFlight 자동 업로드
+
+workflows:
+  ios-release:
+    name: OpenDocs iOS Release
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    integrations:
+      app_store_connect: wowpia_asc_key
+    environment:
+      groups:
+        - opendocs_env
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.wowpia.opendocs
+      vars:
+        BUNDLE_ID: "com.wowpia.opendocs"
+        XCODE_WORKSPACE: "ios/OpenDocs.xcworkspace"
+        XCODE_SCHEME: "OpenDocs"
+      node: 24
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: master
+          include: true
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm install --legacy-peer-deps
+      - name: Set up code signing
+        script: |
+          xcode-project use-profiles
+      - name: Expo prebuild (generates ios/ folder)
+        script: |
+          npx expo prebuild --platform ios --no-install --clean
+      - name: Pod install
+        script: |
+          cd ios && pod install
+      - name: Build IPA (App Store)
+        script: |
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        submit_to_app_store: false
