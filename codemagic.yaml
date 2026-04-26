@@ -18,8 +18,10 @@ workflows:
     environment:
       groups:
         - opendocs_env
-      # ios_signing 블록 제거 — Codemagic 자동 pre-flight check 가 실패 원인
-      # (manual scripts 가 처리)
+      # ios_signing 재추가 — Personal Account 의 .p12 (Moodva/NailShop Distribution) 자동 사용
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.wowpia.opendocs
       vars:
         BUNDLE_ID: "com.wowpia.opendocs"
         XCODE_WORKSPACE: "ios/OpenDocs.xcworkspace"
@@ -43,39 +45,10 @@ workflows:
       - name: Pod install
         script: |
           cd ios && pod install
-      - name: Set up code signing (openssl key + ASC cert create)
+      - name: Apply provisioning profiles (Codemagic 자동 — Nailshop 패턴)
         script: |
-          set -e
-
-          # 1. private key 즉시 생성 (openssl)
-          PRIV_KEY=/tmp/cert_priv_key.pem
-          openssl genrsa -out "$PRIV_KEY" 2048
-          chmod 600 "$PRIV_KEY"
-
-          # 2. 새 distribution cert 생성 + 위 key 사용 + .p12 저장
-          #    IOS_DISTRIBUTION 한도(3개) 초과 시 DISTRIBUTION (Apple Distribution — universal) 폴백
-          app-store-connect certificates create \
-            --type IOS_DISTRIBUTION \
-            --certificate-key=@file:"$PRIV_KEY" \
-            --save \
-          || (echo "IOS_DISTRIBUTION 한도 — Apple Distribution 폴백" && \
-              app-store-connect certificates create \
-                --type DISTRIBUTION \
-                --certificate-key=@file:"$PRIV_KEY" \
-                --save)
-
-          # 3. profile fetch (없으면 생성) — 위 cert 자동 연결
-          app-store-connect fetch-signing-files \
-            "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create \
-            --certificate-key=@file:"$PRIV_KEY"
-
-          # 4. keychain 셋업
-          keychain initialize
-          keychain add-certificates
-
-          # 5. .mobileprovision 을 Xcode project 에 적용
+          # ios_signing 블록 + Personal Account 의 .p12 가 자동 처리됨
+          # 우리는 use-profiles 만 호출 — Codemagic 이 fetched profile 적용
           xcode-project use-profiles
       - name: Build IPA (App Store)
         script: |
