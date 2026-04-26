@@ -38,23 +38,23 @@ workflows:
       - name: Install npm dependencies
         script: |
           npm install --legacy-peer-deps
-      - name: Fetch signing files (ASC + keychain — xcode 의존 X)
-        script: |
-          keychain initialize
-          app-store-connect fetch-signing-files \
-            "$BUNDLE_ID" \
-            --type IOS_APP_STORE \
-            --create
-          keychain add-certificates
       - name: Expo prebuild (generates ios/ folder)
         script: |
           npx expo prebuild --platform ios --no-install --clean
       - name: Pod install
         script: |
           cd ios && pod install
-      - name: Apply provisioning profiles to Xcode project
+      - name: Set up code signing (Codemagic 자동 + manual)
         script: |
-          # ios/ 폴더 생성된 후에 실행 (xcode project 필요)
+          # Codemagic 의 ios_signing 블록 + integration 이 자동 fetch
+          # + manual app-store-connect 백업 (둘 중 하나 성공하면 됨)
+          keychain initialize
+          app-store-connect fetch-signing-files \
+            "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create \
+            --certificate-key-password=""
+          keychain add-certificates
           xcode-project use-profiles
       - name: Build IPA (App Store)
         script: |
