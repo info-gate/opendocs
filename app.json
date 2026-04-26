@@ -11,12 +11,12 @@
     "splash": {
       "image": "./assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#1a56db"
+      "backgroundColor": "#4338CA"
     },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.wowpia.opendocs",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSUserTrackingUsageDescription": "This helps us show relevant ads. Your data is not used to build a personal profile.",
@@ -86,10 +86,10 @@
     },
     "android": {
       "package": "com.wowpia.opendocs",
-      "versionCode": 9,
+      "versionCode": 11,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#1a56db"
+        "backgroundColor": "#4338CA"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
