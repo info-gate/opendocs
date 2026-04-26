@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useFocusEffect } from 'expo-router';
 import { getFavoriteFiles, toggleFavorite, type FileRecord } from '../../db/database';
 import { trackEvent, EVENTS } from '../../observability/posthog';
 
@@ -15,6 +16,13 @@ export function useFavorites() {
       setLoading(false);
     }
   }, []);
+
+  // 탭 전환 시 자동 새로고침 — 다른 탭에서 별표 토글된 결과 즉시 반영
+  useFocusEffect(
+    useCallback(() => {
+      void refresh();
+    }, [refresh])
+  );
 
   useEffect(() => {
     void refresh();

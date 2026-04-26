@@ -20,10 +20,10 @@ import {
   SafeAreaView,
   ScrollView,
   ActivityIndicator,
-  Alert,
   Platform,
 } from 'react-native';
 import * as Haptics from 'expo-haptics';
+import { confirmAsync } from '../../src/shared/utils/confirm';
 import { router } from 'expo-router';
 import * as DocumentPicker from 'expo-document-picker';
 import { useTranslation } from 'react-i18next';
@@ -59,26 +59,21 @@ export default function HomeScreen() {
   }, []);
 
   const handleLongPressFav = useCallback(
-    (fav: FileRecord) => {
+    async (fav: FileRecord) => {
       if (Platform.OS !== 'web') {
         void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
       }
-      Alert.alert(
-        t('home.unfav_confirm_title'),
-        t('home.unfav_confirm_body', { fileName: fav.file_name }),
-        [
-          { text: t('settings.common_cancel'), style: 'cancel' },
-          {
-            text: t('favorites.remove'),
-            style: 'destructive',
-            onPress: () => {
-              void removeFavorite(fav).then(() => {
-                showToast(t('home.unfav_toast'));
-              });
-            },
-          },
-        ],
-      );
+      const ok = await confirmAsync({
+        title: t('home.unfav_confirm_title'),
+        body: t('home.unfav_confirm_body', { fileName: fav.file_name }),
+        okText: t('favorites.remove'),
+        cancelText: t('settings.common_cancel'),
+        destructive: true,
+      });
+      if (ok) {
+        await removeFavorite(fav);
+        showToast(t('home.unfav_toast'));
+      }
     },
     [t, removeFavorite, showToast],
   );

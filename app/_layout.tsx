@@ -10,6 +10,7 @@ import { StatusBar } from 'expo-status-bar';
 import '../src/i18n';
 import { initSentry } from '../src/observability/sentry';
 import { initPostHog } from '../src/observability/posthog';
+import { ConfirmProvider } from '../src/shared/components/ConfirmProvider';
 
 // Sentry DSN 있을 때만 활성화
 initSentry();
@@ -25,19 +26,21 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={{ flex: 1 }}>
-        <StatusBar style="auto" />
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(main)" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="viewer/[fileId]"
-            options={{
-              headerShown: false,
-              presentation: 'fullScreenModal',
-              animation: 'slide_from_bottom',
-            }}
-          />
-          <Stack.Screen name="+not-found" />
-        </Stack>
+        <ConfirmProvider>
+          <StatusBar style="auto" />
+          <Stack screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="(main)" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="viewer/[fileId]"
+              options={{
+                headerShown: false,
+                presentation: 'fullScreenModal',
+                animation: 'slide_from_bottom',
+              }}
+            />
+            <Stack.Screen name="+not-found" />
+          </Stack>
+        </ConfirmProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
   );
