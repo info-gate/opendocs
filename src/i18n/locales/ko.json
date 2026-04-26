@@ -18,6 +18,9 @@
     "favorites_section": "즐겨찾기",
     "favorites_view_all": "전체 보기",
     "favorites_empty": "별표한 파일이 없어요.\n파일을 열고 ☆ 누르면 여기에 고정돼요.",
+    "unfav_confirm_title": "이 즐겨찾기를 해제할까요?",
+    "unfav_confirm_body": "{{fileName}}",
+    "unfav_toast": "즐겨찾기에서 해제했습니다",
 
     "guide_title": "OpenDocs 의 약속",
     "guide_free_title": "진짜 무료",

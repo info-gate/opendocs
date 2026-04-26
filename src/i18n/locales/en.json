@@ -18,6 +18,9 @@
     "favorites_section": "Favorites",
     "favorites_view_all": "View all",
     "favorites_empty": "No starred files yet.\nTap ☆ on a file to pin it here.",
+    "unfav_confirm_title": "Remove from Favorites?",
+    "unfav_confirm_body": "{{fileName}}",
+    "unfav_toast": "Removed from favorites",
 
     "guide_title": "Our Promise",
     "guide_free_title": "Actually Free",

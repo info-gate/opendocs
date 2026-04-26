@@ -32,5 +32,12 @@ export function useFavorites() {
     [refresh],
   );
 
-  return { favorites, loading, refresh, toggle };
+  const removeFavorite = useCallback(
+    async (file: FileRecord) => {
+      await toggle(file);
+    },
+    [toggle],
+  );
+
+  return { favorites, loading, refresh, toggle, removeFavorite };
 }

@@ -11,7 +11,7 @@
  *
  * vs 파일 탭 차별화: 홈 = Action 허브 / 파일 = 전체 history archive
  */
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -20,7 +20,10 @@ import {
   SafeAreaView,
   ScrollView,
   ActivityIndicator,
+  Alert,
+  Platform,
 } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 import * as DocumentPicker from 'expo-document-picker';
 import { useTranslation } from 'react-i18next';
@@ -35,13 +38,50 @@ import { formatRelativeTime } from '../../src/shared/utils/dateUtils';
 import { FormatIcon } from '../../src/shared/components/FormatIcon';
 import type { FileRecord } from '../../src/db/database';
 import { AppHeader } from '../../src/shared/components/AppHeader';
+import { Toast } from '../../src/shared/components/Toast';
 import { COLORS, SHADOWS } from '../../src/shared/theme';
 
 export default function HomeScreen() {
   const { t } = useTranslation();
   const { files, recordOpen } = useRecentFiles();
-  const { favorites } = useFavorites();
+  const { favorites, removeFavorite } = useFavorites();
   useInterstitialAd();
+
+  const toastTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState('');
+
+  const showToast = useCallback((msg: string) => {
+    if (toastTimerRef.current) clearTimeout(toastTimerRef.current);
+    setToastMessage(msg);
+    setToastVisible(true);
+    toastTimerRef.current = setTimeout(() => setToastVisible(false), 2200);
+  }, []);
+
+  const handleLongPressFav = useCallback(
+    (fav: FileRecord) => {
+      if (Platform.OS !== 'web') {
+        void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+      }
+      Alert.alert(
+        t('home.unfav_confirm_title'),
+        t('home.unfav_confirm_body', { fileName: fav.file_name }),
+        [
+          { text: t('settings.common_cancel'), style: 'cancel' },
+          {
+            text: t('favorites.remove'),
+            style: 'destructive',
+            onPress: () => {
+              void removeFavorite(fav).then(() => {
+                showToast(t('home.unfav_toast'));
+              });
+            },
+          },
+        ],
+      );
+    },
+    [t, removeFavorite, showToast],
+  );
 
   const lastOpened = files[0];
   const restFavorites = favorites.slice(0, 8);  // 가로 스크롤 최대 8개
@@ -158,6 +198,8 @@ export default function HomeScreen() {
                   key={fav.id}
                   style={styles.favCard}
                   onPress={() => handleFilePress(fav)}
+                  onLongPress={() => handleLongPressFav(fav)}
+                  delayLongPress={500}
                   activeOpacity={0.7}
                 >
                   <FormatIcon format={getFileFormat(fav.file_name)} size={40} fileName={fav.file_name} />
@@ -207,6 +249,7 @@ export default function HomeScreen() {
       <TouchableOpacity style={styles.fab} onPress={handlePickFile} activeOpacity={0.85}>
         <Text style={styles.fabIcon}>＋</Text>
       </TouchableOpacity>
+      <Toast message={toastMessage} visible={toastVisible} />
     </SafeAreaView>
   );
 }
