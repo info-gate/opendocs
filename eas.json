@@ -1,0 +1,74 @@
+{
+  "cli": {
+    "version": ">= 18.0.0",
+    "appVersionSource": "remote",
+    "promptToConfigurePushNotifications": false
+  },
+  "build": {
+    "development": {
+      "developmentClient": true,
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "development",
+      "env": {
+        "EXPO_PUBLIC_ADMOB_APP_ID_IOS": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_APP_ID_ANDROID": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID_IOS": "ca-app-pub-3940256099942544/2934735716",
+        "EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID_ANDROID": "ca-app-pub-3940256099942544/6300978111",
+        "EXPO_PUBLIC_ADMOB_INTERSTITIAL_UNIT_ID_IOS": "ca-app-pub-3940256099942544/4411468910",
+        "EXPO_PUBLIC_ADMOB_INTERSTITIAL_UNIT_ID_ANDROID": "ca-app-pub-3940256099942544/1033173712",
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
+      }
+    },
+    "preview": {
+      "distribution": "internal",
+      "ios": {
+        "simulator": false
+      },
+      "android": {
+        "buildType": "apk"
+      },
+      "channel": "preview",
+      "env": {
+        "EXPO_PUBLIC_ADMOB_APP_ID_IOS": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_APP_ID_ANDROID": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID_IOS": "ca-app-pub-3940256099942544/2934735716",
+        "EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID_ANDROID": "ca-app-pub-3940256099942544/6300978111",
+        "EXPO_PUBLIC_ADMOB_INTERSTITIAL_UNIT_ID_IOS": "ca-app-pub-3940256099942544/4411468910",
+        "EXPO_PUBLIC_ADMOB_INTERSTITIAL_UNIT_ID_ANDROID": "ca-app-pub-3940256099942544/1033173712",
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
+      }
+    },
+    "production": {
+      "autoIncrement": true,
+      "channel": "production",
+      "env": {
+        "EXPO_PUBLIC_ADMOB_APP_ID_IOS": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_APP_ID_ANDROID": "ca-app-pub-XXXXXXXXXXXXXXXX~XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID_IOS": "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_BANNER_UNIT_ID_ANDROID": "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_INTERSTITIAL_UNIT_ID_IOS": "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX",
+        "EXPO_PUBLIC_ADMOB_INTERSTITIAL_UNIT_ID_ANDROID": "ca-app-pub-XXXXXXXXXXXXXXXX/XXXXXXXXXX",
+        "SENTRY_DISABLE_AUTO_UPLOAD": "true"
+      }
+    }
+  },
+  "submit": {
+    "production": {
+      "ios": {
+        "appleId": "wowpia0127@gmail.com",
+        "ascAppId": "TODO_REGISTER_IN_APP_STORE_CONNECT",
+        "appleTeamId": "TODO"
+      },
+      "android": {
+        "serviceAccountKeyPath": "../../.autopus/secrets/wowpia-play-service-account.json",
+        "track": "internal"
+      }
+    }
+  }
+}
