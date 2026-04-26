@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import * as FileSystem from 'expo-file-system';
+import { Platform } from 'react-native';
+import * as FileSystem from 'expo-file-system/legacy';
+import { useFocusEffect } from 'expo-router';
 import {
   getRecentFiles,
   upsertFileHistory,
@@ -17,27 +19,37 @@ export function useRecentFiles() {
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
-      const recent = await getRecentFiles(20);
+      const recent = await getRecentFiles(50);
       // 경로 유효성 체크 — 삭제된 파일 soft-delete
-      const validated = await Promise.all(
-        recent.map(async (f) => {
-          try {
-            const info = await FileSystem.getInfoAsync(f.file_uri);
-            if (!info.exists) {
-              await markFileDeleted(f.file_uri);
-              return null;
-            }
-          } catch {
-            return null;
-          }
-          return f;
-        }),
-      );
+      // (web 에선 file:// 가 아니라 blob: 인 경우가 많아 getInfoAsync 가 throw → skip)
+      const validated = Platform.OS === 'web'
+        ? recent  // web: 메모리 스토어이므로 항상 유효
+        : await Promise.all(
+            recent.map(async (f) => {
+              try {
+                const info = await FileSystem.getInfoAsync(f.file_uri);
+                if (!info.exists) {
+                  await markFileDeleted(f.file_uri);
+                  return null;
+                }
+              } catch {
+                return null;
+              }
+              return f;
+            }),
+          );
       setFiles(validated.filter(Boolean) as FileRecord[]);
     } finally {
       setLoading(false);
     }
   }, []);
+
+  // 탭 진입 시마다 새로고침 (사용자가 다른 탭에서 파일 열고 돌아왔을 때 자동 반영)
+  useFocusEffect(
+    useCallback(() => {
+      void refresh();
+    }, [refresh])
+  );
 
   useEffect(() => {
     void refresh();

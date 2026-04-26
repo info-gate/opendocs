@@ -1,10 +1,16 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { useTranslation } from 'react-i18next';
-import { Text } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS } from '../../src/shared/theme';
 
-function TabIcon({ emoji, label }: { emoji: string; label: string }) {
-  return <Text style={{ fontSize: 20 }}>{emoji}</Text>;
+type IconName = React.ComponentProps<typeof Ionicons>['name'];
+
+function makeIcon(name: IconName, focusedName: IconName) {
+  return ({ focused, color }: { focused: boolean; color: string }) => (
+    <Ionicons name={focused ? focusedName : name} size={24} color={color} />
+  );
 }
 
 export default function MainTabLayout() {
@@ -13,12 +19,22 @@ export default function MainTabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: '#1a56db',
-        tabBarInactiveTintColor: '#9ca3af',
+        tabBarActiveTintColor: COLORS.tabActive,
+        tabBarInactiveTintColor: COLORS.tabInactive,
         tabBarStyle: {
-          backgroundColor: '#ffffff',
-          borderTopColor: '#e5e7eb',
-          borderTopWidth: 1,
+          backgroundColor: COLORS.surface,
+          borderTopColor: COLORS.border,
+          borderTopWidth: StyleSheet.hairlineWidth,
+          height: Platform.OS === 'ios' ? 90 : 76,
+          paddingTop: 10,
+          paddingBottom: Platform.OS === 'ios' ? 30 : 18,
+        },
+        tabBarItemStyle: { flex: 1, paddingVertical: 2 },
+        tabBarLabelStyle: {
+          fontSize: 12,
+          fontWeight: '600',
+          marginTop: 4,
+          includeFontPadding: false,
         },
         headerShown: false,
       }}
@@ -27,27 +43,21 @@ export default function MainTabLayout() {
         name="index"
         options={{
           title: t('home.recent_files'),
-          tabBarIcon: ({ focused }) => (
-            <TabIcon emoji="🏠" label={t('home.recent_files')} />
-          ),
+          tabBarIcon: makeIcon('time-outline', 'time'),
         }}
       />
       <Tabs.Screen
         name="favorites"
         options={{
-          title: t('favorites.title'),
-          tabBarIcon: ({ focused }) => (
-            <TabIcon emoji="⭐" label={t('favorites.title')} />
-          ),
+          title: t('files.title'),
+          tabBarIcon: makeIcon('folder-open-outline', 'folder-open'),
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: t('settings.title'),
-          tabBarIcon: ({ focused }) => (
-            <TabIcon emoji="⚙️" label={t('settings.title')} />
-          ),
+          tabBarIcon: makeIcon('settings-outline', 'settings'),
         }}
       />
     </Tabs>
