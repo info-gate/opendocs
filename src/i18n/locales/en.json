@@ -1,12 +1,31 @@
 {
   "home": {
     "title": "OpenDocs",
-    "recent_files": "Recent Files",
+    "recent_files": "Home",
     "empty_state": "No files yet.\nTap + to open a document.",
     "file_count": "{{count}} file",
     "file_count_plural": "{{count}} files",
     "pick_file": "Open File",
-    "privacy_badge": "100% Local — No server uploads, ever."
+    "privacy_badge": "100% Local — No server uploads, ever.",
+
+    "action_card_title": "+ Open a File",
+    "action_card_desc": "PDF, HWP, Word, images and more —\nopen any document for free.",
+
+    "resume_section": "Resume",
+    "resume_subtitle": "Continue where you left off",
+    "resume_open": "Open →",
+
+    "favorites_section": "Favorites",
+    "favorites_view_all": "View all",
+    "favorites_empty": "No starred files yet.\nTap ☆ on a file to pin it here.",
+
+    "guide_title": "Our Promise",
+    "guide_free_title": "Actually Free",
+    "guide_free_desc": "No paywalls. Ever.",
+    "guide_local_title": "100% Local",
+    "guide_local_desc": "Files never leave your device",
+    "guide_formats_title": "All Standard Formats",
+    "guide_formats_desc": "PDF · HWP · Word · Excel · EPUB · Images"
   },
   "viewer": {
     "loading": "Loading document...",
@@ -21,14 +40,55 @@
     "add": "Add to Favorites",
     "remove": "Remove from Favorites"
   },
+  "files": {
+    "title": "Files",
+    "empty_state": "No files opened yet.\nTap + to open your first document.",
+    "all": "All Files",
+    "sorted_desc": "Latest first",
+    "delete_title": "Remove this file from the list?",
+    "delete_desc": "Only the entry is removed. The actual file is untouched."
+  },
   "settings": {
     "title": "Settings",
     "language": "Language",
+    "language_section": "Language",
     "app_version": "App Version",
     "privacy_note": "All files are processed locally on your device. Nothing is uploaded to any server.",
     "privacy_title": "Privacy First",
     "about": "About OpenDocs",
-    "forever_free": "Forever Free — No subscriptions, no paywalls."
+    "forever_free": "Forever Free — No subscriptions, no paywalls.",
+
+    "data_section": "Data Management",
+    "clear_cache": "Clear Cache",
+    "clear_cache_title": "Clear cache?",
+    "clear_cache_desc": "Recent files and favorites are kept. Only temporary files will be removed.",
+    "clear_cache_done": "Cache cleared.",
+    "clear_cache_failed": "Failed",
+
+    "feedback_section": "Feedback",
+    "rate_app": "Rate this app",
+    "send_email": "Email us",
+    "feedback_subject": "[OpenDocs] Feedback",
+
+    "legal_section": "Legal",
+    "privacy_policy": "Privacy Policy",
+    "terms_of_service": "Terms of Service",
+    "open_source": "Open Source Licenses",
+    "open_source_coming": "Coming soon",
+
+    "info_section": "App Info",
+    "developer": "Developer",
+    "developer_name": "wowpia",
+
+    "formats_section": "Supported Formats",
+    "formats_desc": "Open these formats locally — fully offline.",
+
+    "wowpia_section": "More from wowpia",
+    "wowpia_visit_hub": "Visit wowpia.kr →",
+
+    "common_cancel": "Cancel",
+    "common_delete": "Delete",
+    "common_open_link_failed": "Could not open link"
   },
   "error": {
     "render_failed_title": "Couldn't Open File",
@@ -39,7 +99,12 @@
     "image_render_failed": "This image couldn't be displayed.",
     "file_not_found": "File not found. It may have been moved or deleted.",
     "format_unsupported": "This file format is not supported. Supported formats: PDF, HWP, HWPX, DOCX, PPTX, XLSX, EPUB, TXT, and images.",
-    "retry": "Try Again"
+    "retry": "Try Again",
+
+    "web_mobile_only_title": "Open this format in the mobile app",
+    "web_mobile_only_desc": "{{format}} files only work in the mobile app (iOS/Android).\nOn the web, only PDF, XLSX, DOCX, images, and text are supported.",
+    "loading_doc": "Loading document...",
+    "render_failed_web": "This file cannot be displayed. It may be corrupted or too large."
   },
   "format": {
     "pdf": "PDF",

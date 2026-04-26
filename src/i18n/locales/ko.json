@@ -1,12 +1,31 @@
 {
   "home": {
     "title": "OpenDocs",
-    "recent_files": "최근 파일",
+    "recent_files": "최근",
     "empty_state": "열어본 파일이 없습니다.\n+ 버튼으로 문서를 열어보세요.",
     "file_count": "파일 {{count}}개",
     "file_count_plural": "파일 {{count}}개",
     "pick_file": "파일 열기",
-    "privacy_badge": "100% 로컬 처리 — 서버 전송 없음"
+    "privacy_badge": "100% 로컬 처리 — 서버 전송 없음",
+
+    "action_card_title": "+ 파일 열기",
+    "action_card_desc": "PDF · HWP · Word · 이미지 등\n어떤 문서든 무료로 바로 열기",
+
+    "resume_section": "이어보기",
+    "resume_subtitle": "마지막에 본 파일",
+    "resume_open": "이어 보기 →",
+
+    "favorites_section": "즐겨찾기",
+    "favorites_view_all": "전체 보기",
+    "favorites_empty": "별표한 파일이 없어요.\n파일을 열고 ☆ 누르면 여기에 고정돼요.",
+
+    "guide_title": "OpenDocs 의 약속",
+    "guide_free_title": "진짜 무료",
+    "guide_free_desc": "결제 팝업 없음, 영원히",
+    "guide_local_title": "100% 로컬 처리",
+    "guide_local_desc": "파일이 기기 밖으로 안 나갑니다",
+    "guide_formats_title": "모든 표준 포맷",
+    "guide_formats_desc": "PDF · HWP · Word · Excel · EPUB · 이미지"
   },
   "viewer": {
     "loading": "문서를 불러오는 중...",
@@ -21,14 +40,55 @@
     "add": "즐겨찾기 추가",
     "remove": "즐겨찾기 해제"
   },
+  "files": {
+    "title": "파일 관리",
+    "empty_state": "아직 열어본 파일이 없어요.\n+ 버튼으로 첫 파일을 열어보세요.",
+    "all": "전체 파일",
+    "sorted_desc": "최신순",
+    "delete_title": "이 파일을 목록에서 삭제할까요?",
+    "delete_desc": "기록만 삭제됩니다. 실제 파일은 영향 없음."
+  },
   "settings": {
     "title": "설정",
     "language": "언어",
+    "language_section": "언어 / Language",
     "app_version": "앱 버전",
     "privacy_note": "모든 파일은 기기 내에서만 처리됩니다. 서버로 전송되지 않습니다.",
     "privacy_title": "개인정보 보호",
     "about": "OpenDocs 정보",
-    "forever_free": "영원히 무료 — 구독 없음, 결제 팝업 없음."
+    "forever_free": "영원히 무료 — 구독 없음, 결제 팝업 없음.",
+
+    "data_section": "데이터 관리",
+    "clear_cache": "캐시 삭제",
+    "clear_cache_title": "캐시를 삭제할까요?",
+    "clear_cache_desc": "최근 파일 목록과 즐겨찾기는 유지됩니다. 임시 파일만 삭제됩니다.",
+    "clear_cache_done": "캐시가 삭제되었습니다.",
+    "clear_cache_failed": "실패",
+
+    "feedback_section": "피드백",
+    "rate_app": "앱스토어 평가하기",
+    "send_email": "이메일 문의",
+    "feedback_subject": "[OpenDocs] 피드백",
+
+    "legal_section": "법적 정보",
+    "privacy_policy": "개인정보처리방침",
+    "terms_of_service": "이용약관",
+    "open_source": "오픈소스 라이선스",
+    "open_source_coming": "곧 추가됩니다",
+
+    "info_section": "앱 정보",
+    "developer": "개발자",
+    "developer_name": "wowpia",
+
+    "formats_section": "지원 파일 형식",
+    "formats_desc": "다음 형식의 파일을 기기 내에서 열어볼 수 있습니다 — 완전 오프라인.",
+
+    "wowpia_section": "wowpia의 다른 앱",
+    "wowpia_visit_hub": "wowpia.kr 방문하기 →",
+
+    "common_cancel": "취소",
+    "common_delete": "삭제",
+    "common_open_link_failed": "링크를 열 수 없습니다"
   },
   "error": {
     "render_failed_title": "파일을 열 수 없음",
@@ -39,7 +99,12 @@
     "image_render_failed": "이미지를 표시할 수 없습니다.",
     "file_not_found": "파일을 찾을 수 없습니다. 이동되거나 삭제된 파일일 수 있습니다.",
     "format_unsupported": "지원하지 않는 파일 형식입니다. 지원 형식: PDF, HWP, HWPX, DOCX, PPTX, XLSX, EPUB, TXT, 이미지",
-    "retry": "다시 시도"
+    "retry": "다시 시도",
+
+    "web_mobile_only_title": "이 형식은 모바일 앱에서 보세요",
+    "web_mobile_only_desc": "{{format}} 파일은 모바일 앱(iOS/Android)에서만 열립니다.\nPC에서는 PDF, XLSX, DOCX, 이미지, 텍스트만 지원됩니다.",
+    "loading_doc": "문서를 불러오는 중...",
+    "render_failed_web": "이 파일을 표시할 수 없습니다. 손상되었거나 매우 큰 파일일 수 있습니다."
   },
   "format": {
     "pdf": "PDF",
