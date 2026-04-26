@@ -38,8 +38,13 @@ workflows:
       - name: Install npm dependencies
         script: |
           npm install --legacy-peer-deps
-      - name: Set up code signing
+      - name: Set up code signing (auto-create profile if missing)
         script: |
+          # ASC API 로 provisioning profile 자동 fetch + 없으면 생성
+          xcode-project fetch-signing-files \
+            --bundle-id "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
           xcode-project use-profiles
       - name: Expo prebuild (generates ios/ folder)
         script: |
