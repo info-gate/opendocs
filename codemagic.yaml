@@ -38,7 +38,7 @@ workflows:
       - name: Install npm dependencies
         script: |
           npm install --legacy-peer-deps
-      - name: Set up code signing (Moodva 검증 패턴)
+      - name: Fetch signing files (ASC + keychain — xcode 의존 X)
         script: |
           keychain initialize
           app-store-connect fetch-signing-files \
@@ -46,13 +46,16 @@ workflows:
             --type IOS_APP_STORE \
             --create
           keychain add-certificates
-          xcode-project use-profiles
       - name: Expo prebuild (generates ios/ folder)
         script: |
           npx expo prebuild --platform ios --no-install --clean
       - name: Pod install
         script: |
           cd ios && pod install
+      - name: Apply provisioning profiles to Xcode project
+        script: |
+          # ios/ 폴더 생성된 후에 실행 (xcode project 필요)
+          xcode-project use-profiles
       - name: Build IPA (App Store)
         script: |
           xcode-project build-ipa \
