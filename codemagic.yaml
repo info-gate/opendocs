@@ -43,23 +43,39 @@ workflows:
       - name: Pod install
         script: |
           cd ios && pod install
-      - name: Set up code signing (cert + profile auto-create)
+      - name: Set up code signing (openssl key + ASC cert create)
         script: |
           set -e
-          keychain initialize
-          # 1. 새 distribution cert + private key 생성 + 로컬 저장
-          #    (existing cert 의 private key 가 Codemagic 에 없어서 fetch 만으론 안 됨)
+
+          # 1. private key 즉시 생성 (openssl)
+          PRIV_KEY=/tmp/cert_priv_key.pem
+          openssl genrsa -out "$PRIV_KEY" 2048
+          chmod 600 "$PRIV_KEY"
+
+          # 2. 새 distribution cert 생성 + 위 key 사용 + .p12 저장
+          #    IOS_DISTRIBUTION 한도(3개) 초과 시 DISTRIBUTION (Apple Distribution — universal) 폴백
           app-store-connect certificates create \
             --type IOS_DISTRIBUTION \
-            --save || echo "cert create skipped (이미 한도 도달 가능 — fetch 시도)"
-          # 2. profile fetch (없으면 생성) + 위 cert 와 연결
+            --certificate-key=@file:"$PRIV_KEY" \
+            --save \
+          || (echo "IOS_DISTRIBUTION 한도 — Apple Distribution 폴백" && \
+              app-store-connect certificates create \
+                --type DISTRIBUTION \
+                --certificate-key=@file:"$PRIV_KEY" \
+                --save)
+
+          # 3. profile fetch (없으면 생성) — 위 cert 자동 연결
           app-store-connect fetch-signing-files \
             "$BUNDLE_ID" \
             --type IOS_APP_STORE \
-            --create
-          # 3. .p12 cert 를 keychain 에 추가
+            --create \
+            --certificate-key=@file:"$PRIV_KEY"
+
+          # 4. keychain 셋업
+          keychain initialize
           keychain add-certificates
-          # 4. .mobileprovision 을 Xcode project 에 적용
+
+          # 5. .mobileprovision 을 Xcode project 에 적용
           xcode-project use-profiles
       - name: Build IPA (App Store)
         script: |
