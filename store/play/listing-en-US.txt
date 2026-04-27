@@ -1,35 +1,69 @@
 ### App name — 30 char limit
-OpenDocs - Free Document Viewer
+PDF Viewer & HWP - OpenDocs
 
 ### Short description — 80 char limit
-Open PDF, Word, Excel, HWP and more — fast, free, fully offline viewer.
+Free viewer for PDF, HWP, Word, Excel, EPUB. No sign-up. Fast. Fully offline.
 
 ### Full description — 4000 char limit / 0 hashtags
-OpenDocs is a lightweight, free document viewer for all standard file formats.
-No sign-up, no subscription, no in-app purchases. Just open and read.
+Open every document at once. PDF · HWP · DOCX · XLSX · PPTX · EPUB · Images — OpenDocs is the only viewer you need.
+
+No sign-up. No subscription. No in-app purchases.
+A lightweight, free viewer for everyday document needs.
 
 [Supported formats]
-PDF · HWP (Korean Hangul) · DOCX (Word) · XLSX (Excel) · PPTX (PowerPoint) · EPUB · TXT · Images (JPG, PNG, WEBP, GIF)
+• PDF — fast page swipe + pinch zoom
+• HWP / 한글 (Hancom) — native support for Korean documents
+• DOCX (Word) / XLSX (Excel) / PPTX (PowerPoint)
+• EPUB — built-in e-book reader
+• TXT — plain text
+• Images — JPG, PNG, WEBP, GIF
+
+[Why OpenDocs]
+✓ Free PDF reader — no Adobe login required
+✓ Free HWP viewer — read Korean Hangul docs without paid Hancom Office
+✓ No account required — minimal permissions, no data collection
+✓ Lightweight — runs fast even on older devices
+✓ Ad placement separated — no ads inside the document viewer (no distractions)
 
 [Key features]
 • Fast launch — opens instantly without heavy office suites
 • Clean viewer — page swipe, pinch zoom, dark mode
-• Recent files manager — quick access to documents you read often
+• Recent files — quick access to documents you read often
 • Favorites — pin important files to the top
+• Multilingual UI — English, Korean, Japanese
 • Privacy-first — all processing happens on your device, nothing uploaded
 
-[Why OpenDocs?]
-- Completely free, supported by ads (no ads inside the document viewer)
-- No account required, minimal permissions
-- Native HWP support for Korean documents
-- Lightweight and fast (works on older devices)
-- Multilingual UI — English, Korean, Japanese
-
-[Who is it for?]
-• Professionals reviewing PDFs and Word docs on the go
-• Students studying class materials on mobile
-• Korean users who frequently open HWP files
+[Who is it for]
+• Professionals reviewing PDF, Word, Excel files on the go
+• Students reading class materials on mobile
+• Korean speakers who frequently open HWP files
 • Anyone who wants a lightweight viewer instead of a heavy office app
+• Users tired of ad-heavy, sign-up-required document apps
+
+[Compared to other viewers]
+• Hancom Office: HWP only, paid subscription or limited free, login required
+• Adobe Reader: PDF only, no HWP, some features paid, login pushed
+• WPS / Microsoft 365: no HWP, ads or subscription required
+• OpenDocs: HWP + PDF + Word + Excel + EPUB + images all free, no sign-up
+
+[FAQ]
+
+Q. Will HWP files open without breaking?
+A. Yes. We natively support the Hangul (HWP) standard format. Text, tables, and images all render properly.
+
+Q. Can I edit documents?
+A. The current version is a viewer (read-only), optimized for fast review and sharing.
+
+Q. Does it work offline?
+A. Yes. Everything happens on your device. No server uploads, fully offline.
+
+Q. Is it really free? Any hidden charges?
+A. Completely free. No in-app purchases, no subscription, no premium-locked features. Supported by ads.
+
+Q. Is it useful outside Korea?
+A. Yes. UI in English, Korean, Japanese. Plus all global formats — PDF, DOCX, XLSX, EPUB, images.
 
 OpenDocs is built to save you time.
 Install now and open any document, anywhere.
+
+— wowpia (Info-Gate Inc.)
