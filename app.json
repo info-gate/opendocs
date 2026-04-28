@@ -16,10 +16,9 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.wowpia.opendocs",
-      "buildNumber": "2",
+      "buildNumber": "7",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
-        "NSUserTrackingUsageDescription": "This helps us show relevant ads. Your data is not used to build a personal profile.",
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": false
         }
@@ -45,7 +44,7 @@
           {
             "NSPrivacyCollectedDataType": "NSPrivacyCollectedDataTypeDeviceID",
             "NSPrivacyCollectedDataTypeLinked": false,
-            "NSPrivacyCollectedDataTypeTracking": true,
+            "NSPrivacyCollectedDataTypeTracking": false,
             "NSPrivacyCollectedDataTypePurposes": [
               "NSPrivacyCollectedDataTypePurposeThirdPartyAdvertising"
             ]
@@ -77,11 +76,7 @@
             ]
           }
         ],
-        "NSPrivacyTracking": true,
-        "NSPrivacyTrackingDomains": [
-          "googleads.g.doubleclick.net",
-          "pagead2.googlesyndication.com"
-        ]
+        "NSPrivacyTracking": false
       }
     },
     "android": {
@@ -132,12 +127,6 @@
               "android.bundle.enableUncompressedNativeLibs": "true"
             }
           }
-        }
-      ],
-      [
-        "expo-tracking-transparency",
-        {
-          "userTrackingPermission": "This helps us show relevant ads. Your data is not used to build a personal profile."
         }
       ],
       "expo-localization",

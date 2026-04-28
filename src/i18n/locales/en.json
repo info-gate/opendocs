@@ -6,10 +6,10 @@
     "file_count": "{{count}} file",
     "file_count_plural": "{{count}} files",
     "pick_file": "Open File",
-    "privacy_badge": "100% Local — No server uploads, ever.",
+    "privacy_badge": "100% Local",
 
     "action_card_title": "+ Open a File",
-    "action_card_desc": "PDF, HWP, Word, images and more —\nopen any document for free.",
+    "action_card_desc": "PDF, HWP, Word, images and more —\nopen any document instantly.",
 
     "resume_section": "Resume",
     "resume_subtitle": "Continue where you left off",
@@ -23,8 +23,8 @@
     "unfav_toast": "Removed from favorites",
 
     "guide_title": "Our Promise",
-    "guide_free_title": "Actually Free",
-    "guide_free_desc": "No paywalls. Ever.",
+    "guide_fast_title": "Instant Open",
+    "guide_fast_desc": "One tap to open",
     "guide_local_title": "100% Local",
     "guide_local_desc": "Files never leave your device",
     "guide_formats_title": "All Standard Formats",
@@ -64,7 +64,7 @@
     "privacy_note": "All files are processed locally on your device. Nothing is uploaded to any server.",
     "privacy_title": "Privacy First",
     "about": "About OpenDocs",
-    "forever_free": "Forever Free — No subscriptions, no paywalls.",
+    "forever_free": "On-device · Fast · Native HWP support",
 
     "data_section": "Data Management",
     "clear_cache": "Clear Cache",
@@ -131,9 +131,9 @@
     "unknown": "Unknown"
   },
   "onboarding": {
-    "title": "Actually Free.\nNo Tricks.",
+    "title": "All Standard Documents.\nIn One App.",
     "privacy_promise": "Your files never leave your device.",
-    "no_account_needed": "No account. No subscription. No paywall. Ever.",
+    "no_account_needed": "No account. No sign-up. 100% on-device processing.",
     "get_started": "Open a File"
   },
   "language": {

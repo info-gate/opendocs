@@ -126,7 +126,7 @@ export default function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <AppHeader badge={{ icon: '🔒', text: '100% Local · Forever Free', variant: 'success' }} />
+      <AppHeader badge={{ icon: '🔒', text: t('home.privacy_badge'), variant: 'success' }} />
       <AdBannerCard />
 
       <ScrollView style={styles.scroll} contentContainerStyle={styles.scrollContent}>
@@ -214,11 +214,11 @@ export default function HomeScreen() {
           </View>
           <View style={styles.guideGrid}>
             <GuideCard
-              icon="🆓"
+              icon="⚡"
               iconBg={COLORS.successSoft}
               iconColor={COLORS.success}
-              title={t('home.guide_free_title')}
-              desc={t('home.guide_free_desc')}
+              title={t('home.guide_fast_title')}
+              desc={t('home.guide_fast_desc')}
             />
             <GuideCard
               icon="🔒"

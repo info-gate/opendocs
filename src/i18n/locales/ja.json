@@ -6,7 +6,29 @@
     "file_count": "{{count}}個のファイル",
     "file_count_plural": "{{count}}個のファイル",
     "pick_file": "ファイルを開く",
-    "privacy_badge": "100%ローカル処理 — サーバーへの送信なし"
+    "privacy_badge": "100%ローカル処理",
+
+    "action_card_title": "+ ファイルを開く",
+    "action_card_desc": "PDF · HWP · Word · 画像 など\nどんな文書も素早く開けます",
+
+    "resume_section": "続きから",
+    "resume_subtitle": "最後に見たファイル",
+    "resume_open": "続きを開く →",
+
+    "favorites_section": "お気に入り",
+    "favorites_view_all": "すべて表示",
+    "favorites_empty": "星付きファイルはありません。\nファイルを開いて☆を押すとここに固定されます。",
+    "unfav_confirm_title": "お気に入りを解除しますか？",
+    "unfav_confirm_body": "{{fileName}}",
+    "unfav_toast": "お気に入りから削除しました",
+
+    "guide_title": "OpenDocsの約束",
+    "guide_fast_title": "高速起動",
+    "guide_fast_desc": "ワンタップで開く",
+    "guide_local_title": "100% ローカル処理",
+    "guide_local_desc": "ファイルは端末から出ません",
+    "guide_formats_title": "すべての標準フォーマット",
+    "guide_formats_desc": "PDF · HWP · Word · Excel · EPUB · 画像"
   },
   "viewer": {
     "loading": "読み込み中...",
@@ -28,7 +50,7 @@
     "privacy_note": "すべてのファイルはデバイス上でのみ処理されます。サーバーには送信されません。",
     "privacy_title": "プライバシー保護",
     "about": "OpenDocsについて",
-    "forever_free": "永久無料 — サブスクなし、課金ポップアップなし。"
+    "forever_free": "端末内処理 · 高速 · 韓国語HWPネイティブ対応"
   },
   "error": {
     "render_failed_title": "ファイルを開けません",
@@ -58,9 +80,9 @@
     "unknown": "不明"
   },
   "onboarding": {
-    "title": "本当に無料。\n隠れた課金なし。",
+    "title": "標準文書を\n一つで開けます。",
     "privacy_promise": "ファイルはデバイスの外に出ません。",
-    "no_account_needed": "アカウント不要。サブスク不要。ポップアップなし。永久に。",
+    "no_account_needed": "アカウント不要。登録不要。100%端末内処理。",
     "get_started": "ファイルを開く"
   },
   "language": {

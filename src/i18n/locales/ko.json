@@ -6,10 +6,10 @@
     "file_count": "파일 {{count}}개",
     "file_count_plural": "파일 {{count}}개",
     "pick_file": "파일 열기",
-    "privacy_badge": "100% 로컬 처리 — 서버 전송 없음",
+    "privacy_badge": "100% 로컬 처리",
 
     "action_card_title": "+ 파일 열기",
-    "action_card_desc": "PDF · HWP · Word · 이미지 등\n어떤 문서든 무료로 바로 열기",
+    "action_card_desc": "PDF · HWP · Word · 이미지 등\n어떤 문서든 바로 열기",
 
     "resume_section": "이어보기",
     "resume_subtitle": "마지막에 본 파일",
@@ -23,8 +23,8 @@
     "unfav_toast": "즐겨찾기에서 해제했습니다",
 
     "guide_title": "OpenDocs 의 약속",
-    "guide_free_title": "진짜 무료",
-    "guide_free_desc": "결제 팝업 없음, 영원히",
+    "guide_fast_title": "빠른 실행",
+    "guide_fast_desc": "탭 한 번에 바로 열림",
     "guide_local_title": "100% 로컬 처리",
     "guide_local_desc": "파일이 기기 밖으로 안 나갑니다",
     "guide_formats_title": "모든 표준 포맷",
@@ -64,7 +64,7 @@
     "privacy_note": "모든 파일은 기기 내에서만 처리됩니다. 서버로 전송되지 않습니다.",
     "privacy_title": "개인정보 보호",
     "about": "OpenDocs 정보",
-    "forever_free": "영원히 무료 — 구독 없음, 결제 팝업 없음.",
+    "forever_free": "기기 내 처리 · 빠른 실행 · 한국어 HWP 지원",
 
     "data_section": "데이터 관리",
     "clear_cache": "캐시 삭제",
@@ -131,9 +131,9 @@
     "unknown": "알 수 없음"
   },
   "onboarding": {
-    "title": "진짜 무료.\n숨겨진 결제 없음.",
+    "title": "표준 문서를\n한 번에 열어보세요.",
     "privacy_promise": "파일이 기기 밖으로 나가지 않습니다.",
-    "no_account_needed": "계정 없이. 결제 없이. 팝업 없이. 영원히.",
+    "no_account_needed": "계정 없이. 가입 없이. 100% 기기 내 처리.",
     "get_started": "파일 열기"
   },
   "language": {
